@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+app.pid
+server.log
+engineLog*.txt
+cxlog_analyser.html

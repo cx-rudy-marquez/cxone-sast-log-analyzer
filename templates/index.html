@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Checkmarx One · Enter Scan ID{% endblock %}
+{% block content %}
+
+<div class="hero">
+  <h1 class="brand-line" style="margin:0 0 6px">SAST Log Viewer</h1>
+  <div class="muted">Enter a <span class="mono">scan id</span> to render a themed report.</div>
+</div>
+
+{% if not env_ok %}
+  <div class="toast error">
+    <div><strong>Environment not set</strong></div>
+    <div class="muted tiny">Make sure <span class="mono">CX_TENANT</span>, <span class="mono">CX_AST_BASE</span>, and <span class="mono">CX_API_KEY</span> (refresh token) are present in your <span class="mono">.env</span>.</div>
+  </div>
+{% endif %}
+
+<div class="panel">
+  <form method="post" action="{{ url_for('report_post') }}">
+    <div class="form-grid">
+      <div class="field full">
+        <label class="label" for="scan_id">Scan ID</label>
+        <input class="input" id="scan_id" name="scan_id" type="text" required
+               placeholder="e7e3a762-ed7e-419d-b54f-bdad1d45a470"
+               autofocus />
+      </div>
+      <div class="form-actions">
+        <button class="btn primary" type="submit">Create Report</button>
+        <a class="btn ghost" href="#" onclick="document.getElementById('scan_id').value='';return false;">Clear</a>
+      </div>
+    </div>
+  </form>
+
+  <details class="details" style="margin-top:12px">
+    <summary>Connection details</summary>
+    <pre class="mono">CX_TENANT={{ tenant or '—' }}
+CX_AST_BASE={{ ast_base or '—' }}</pre>
+  </details>
+</div>
+
+<div class="empty">
+  <div class="muted">Report will open as a full page (no iframes) once you submit.</div>
+</div>
+
+{% endblock %}

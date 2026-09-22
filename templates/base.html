@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{% block title %}Checkmarx One · Log Viewer{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/suite.css') }}">
+  <style>
+    /* page-specific sugar */
+    .hero   { padding: 36px 0 10px; }
+    .brand  { display:flex; align-items:center; gap:12px }
+    .brand-mark{ width:10px; height:10px; border-radius:50%; background:var(--cx-accent); box-shadow:0 0 10px rgba(100,188,75,.35)}
+    .brand-text{ font-weight:700; letter-spacing:.2px }
+    .brand-sub { color: var(--cx-muted); font-size:.9rem }
+    .panel  { background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+              border:1px solid var(--cx-border); border-radius:16px; padding:22px; box-shadow:var(--cx-shadow); }
+    .row    { display:grid; gap:16px }
+    .row-2  { grid-template-columns:repeat(2,minmax(0,1fr)) }
+    @media(max-width:980px){ .row-2{ grid-template-columns:1fr } }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body class="cx-bg">
+  <header class="cx-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">Checkmarx One</div>
+        <div class="brand-sub">· Log Viewer</div>
+      </div>
+      <div class="nav-actions">
+        <a class="btn ghost small" href="/">Home</a>
+        <a class="btn primary small" href="https://docs.checkmarx.com/en/34965-67042-checkmarx-one.html" target="_blank" rel="noreferrer">Docs</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-main" class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="cx-footer">
+    <div class="container footer-inner">
+      <div class="muted">© {{ 2025 }} Checkmarx One (custom log viewer)</div>
+      <div class="muted mono">Tenant: {{ tenant if tenant else '—' }}</div>
+    </div>
+  </footer>
+</body>
+</html>
