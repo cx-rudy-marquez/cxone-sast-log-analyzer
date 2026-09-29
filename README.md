@@ -1,8 +1,6 @@
 # Checkmarx One – SAST Log Viewer
 
-A lightweight Flask app that exchanges a Checkmarx refresh token for an access token, fetches a SAST scan’s raw engine log and scan metadata, parses the log for key insights, and renders a sleek, single-page HTML report (no iframes).
-
-The report is themed to match the Checkmarx “Scheduling Console” look & feel and includes download support for an offline HTML report.
+A lightweight Flask app that exchanges a Checkmarx refresh token for an access token, fetches a SAST scan’s raw engine log and scan metadata, parses the log for key insights, and renders a sleek, single-page HTML report (no iframes), with download support for an offline HTML report.
 
 ---
 
@@ -95,7 +93,7 @@ CxOneLogViewer/
    Gets the text log used by `report_renderer.py` parsers.
 
 4. **Parse and render**  
-   `report_renderer.py` turns the log into a single HTML document matching the suite style.
+   `report_renderer.py` turns the log into a single, styled HTML document.
 
 
 ## Key Parsers
